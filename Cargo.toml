@@ -1,0 +1,41 @@
+[package]
+name = "kac-inspector"
+version = "1.0.0"
+edition = "2024"
+authors = ["Saad Ahmed <https://saadahmedev.com>"]
+description = "Detects kernel-mode anti-cheat drivers on Windows and reports their live state."
+license = "MIT"
+repository = "https://github.com/saadahmedscse/kac-inspector"
+rust-version = "1.89"
+
+[[bin]]
+name = "kac-inspector"
+path = "src/main.rs"
+
+[target."cfg(windows)".dependencies]
+windows-sys = { version = "0.59", features = [
+    "Win32_Foundation",
+    "Win32_Security",
+    "Win32_System_Threading",
+    "Win32_System_ProcessStatus",
+    "Win32_System_Services",
+    "Win32_System_Registry",
+    "Win32_System_Console",
+    "Win32_System_SystemInformation",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+# The signature table and the renderer are long by nature; splitting them hurts reading.
+too_many_lines = "allow"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+
+[dependencies]
+crossterm = "0.29"
