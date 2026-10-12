@@ -1,0 +1,40 @@
+name: Missing or wrong anti-cheat
+description: An anti-cheat driver that is not detected, or is detected under the wrong name.
+labels: [signature]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Anti-cheat
+      placeholder: "Riot Vanguard"
+    validations:
+      required: true
+  - type: input
+    id: vendor
+    attributes:
+      label: Vendor
+      placeholder: "Riot Games"
+  - type: input
+    id: games
+    attributes:
+      label: Games that ship it
+      placeholder: "VALORANT, League of Legends"
+  - type: input
+    id: driver
+    attributes:
+      label: Driver file name(s)
+      placeholder: "vgk.sys"
+    validations:
+      required: true
+  - type: input
+    id: service
+    attributes:
+      label: Kernel service name, and companion service if any
+      placeholder: "vgk / vgc"
+  - type: textarea
+    id: source
+    attributes:
+      label: Source
+      description: Where the names come from, such as a vendor page, `sc query type= driver` output or LOLDrivers.
+    validations:
+      required: true

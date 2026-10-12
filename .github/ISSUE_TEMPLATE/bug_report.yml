@@ -1,0 +1,40 @@
+name: Bug report
+description: Something is reported wrong, or the program misbehaves.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you saw, and what you expected to see instead.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: KAC Inspector version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version and build
+      placeholder: "Windows 11 Pro 26100"
+    validations:
+      required: true
+  - type: dropdown
+    id: admin
+    attributes:
+      label: Did it run as administrator?
+      options:
+        - "Yes"
+        - "No"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: Paste the relevant part of the report, or attach a screenshot.
